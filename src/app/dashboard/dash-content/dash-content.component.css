@@ -8,7 +8,7 @@
 .custom-flex{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 .custom-card{
     margin-top: 30px;
@@ -16,4 +16,21 @@
 .custom-btn{
     display: flex;
     justify-content: space-between;
+}
+.custom-btn-model{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.container{
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+.center-heading{
+    font-family: 'Dancing Script', cursive;
+    padding: 15px 20px;
+    font-size: 25px;  
+}
+.modal{
+    z-index: 2000;
 }

@@ -1,16 +1,49 @@
 <div class="main-dash-content">
     <div class="custom-flex">
-        <div *ngFor='let item of MainArr' class="card bg-dark text-white custom-card" style="width:300px">
+        <div *ngFor='let item of MainArr;index as i' class="card bg-dark text-white custom-card" style="width:300px">
                 <!-- <img class="card-img-top" src="https://robohash.org/{{item.name}}?set=set1&size=180x200" alt="Card image" style="width:100%"> -->
                 <img class="card-img-top" src="assets/images/img_avatar1.png" alt="Card image" style="width:100%">
             <div class="card-body">
                 <h4 class="card-title">{{item.name}}</h4>
                 <p class="card-text">{{item.email}}</p>
                 <div class="custom-btn">
-                    <button class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
-                    <button class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                    <button class="btn btn-danger" (click)="delete(i)"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                    <button class="btn btn-primary" (click)="update(i)" data-toggle="modal" data-target="#myModal2"><i class="fa fa-pencil" aria-hidden="true"></i></button>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<div id="myModal2" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+        <!-- <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div> -->
+        <div class="center-heading">Update Profile</div>
+        <div class="modal-body">
+    <form  [formGroup]= "myMatForm" #myform>
+            <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Name</mat-label>
+                    <input type="text" formControlName="name" matInput required>
+                  </mat-form-field>
+                  <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Email</mat-label>
+                        <input type="emial" formControlName="email" matInput email required>
+                      </mat-form-field>
+                      <div class="container custom-btn-model">
+                        <button [disabled]="true" type="button" class="btn btn-primary" (click)="onSubmit(myform)">Update</button>
+                        <!-- <button [disabled]='!myMatForm.valid' type="button" class="btn btn-primary" (click)="onSubmit(myform)">Update</button> -->
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+            </form>
+        </div>
+       
+      </div>
+  
+    </div>
+  </div>
